@@ -2,19 +2,19 @@ class PriorityQueue:
   def __init__(self):
     self.heap = []
 
-  def push(self, item, _priority):
-    entry = (_priority, item)
+  def push(self, item, priority):
+    entry = (priority, item)
     self.heap.append(entry)
     self._sift_up(len(self.heap) - 1)
 
   def pop(self):
     if len(self.heap) > 1:
       self._swap(0, len(self.heap) - 1)
-      _priority, item = self.heap.pop()
+      priority, item = self.heap.pop()
       self._sift_down(0)
       return item
     elif len(self.heap) == 1:
-      _priority, item = self.heap.pop()
+      priority, item = self.heap.pop()
       return item
     else:
       return None
@@ -34,11 +34,11 @@ class PriorityQueue:
       right_child_index = 2 * index + 2
       smallest = index
 
-      if left_child_index < len(self.heap) and \
+      if left_child_index < len(self.heap) and 
         self.heap[left_child_index][0] > self.heap[smallest][0]:
         smallest = left_child_index
 
-      if right_child_index < len(self.heap) and \
+      if right_child_index < len(self.heap) and 
         self.heap[right_child_index][0] > self.heap[smallest][0]:
         smallest = right_child_index
 
